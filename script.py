@@ -20,7 +20,7 @@ def main():
 
     # Definine informações do cabeçalho de soliticação
     user_agent = {
-        'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36'
+        "User-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
         }
 
     # URL de busca de arquivos referentes à data passada por parâmetro
@@ -29,23 +29,23 @@ def main():
     # Retorna página com todos os DJs referentes à data
     resposta = requests.get(url_busca_djs, headers=user_agent)
     # Cria o objeto BeautifulSoup
-    soup = BeautifulSoup(resposta.content, 'html.parser')
+    soup = BeautifulSoup(resposta.content, "html.parser")
     # Busca o ul com lista dos DJs
-    ul = soup.find('ul', {'class': 'result__container--simples'})
+    ul = soup.find("ul", {"class": "result__container--simples"})
     # Cria HTML da variável ul
-    html = BeautifulSoup(ul.prettify(), 'html.parser')
+    html = BeautifulSoup(ul.prettify(), "html.parser")
     # Busca todas as tags a existentes na variável html
-    links = html.find_all('a')
+    links = html.find_all("a")
 
     for link in links:
         # Divifine o conteúdo do href
-        split_link = link.get('href').split('&')
+        split_link = link.get("href").split("&")
         # Difine o conteúdo da variável split_link
-        split_dj = split_link[1].split('=')
+        split_dj = split_link[1].split("=")
         # Atribui à variável a posição 1 do array split_dj que é referente ao número DJ
         num_dj = split_dj[1]
 
-        if (num_dj != '0'):
+        if (num_dj != "0"):
             # Link para a busca do PDF, de acordo com o numero do DJ e a data, passados por parâmetro
             url = f"https://portal.stf.jus.br/servicos/dje/verDiarioEletronico.asp?numero={num_dj}&data={data_formatada}"
             # Retorna página com o PDF
@@ -66,11 +66,11 @@ def main():
                 os.mkdir(data_busca)
 
             # Abre e salva o arquivo PDF com o nome sendo o valor do seu respectivo hash
-            with open(data_busca + '/' + hash_md5 + '.pdf', 'wb') as f:
+            with open(data_busca + "/" + hash_md5 + ".pdf", "wb") as f:
                 f.write(html.content)
 
             # Imprime o hash MD5 na saída padrão
-            print('No. DJ: ' + num_dj + '\nHash: ' + hash_md5 + '\n')
+            print("No. DJ: " + num_dj + "\nHash: " + hash_md5 + "\n")
 
         
 # verificando se a variavel __name__ == __main__,(verifica se este aquivo está sendo execultado) entao execulta o main() lá de cima.
