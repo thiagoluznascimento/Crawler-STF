@@ -29,7 +29,7 @@ python script.py "2022-12-13"
 ```
 
 ## Dificuldades:
-Uma das dificudades que tive, foi conseguir fazer a requisição com a página do STF, pois, sempre retornava o status code 403, onde em pesquisa feita, revelava que eu não tinha permissão para fazer a requisição. Logo, pedir para imprimir o response em formato de texto que me retornava a seguinte mensagem: "Seu acesso a este website foi bloqueado de forma preventiva. Por favor, tente novamente em alguns minutos. (FD)". Depois de esperar por minutos, horas e nada de conseguir fazer a requisição. Foi então que procurei a mensagem no Google para verificar melhor qual seria a solução do problema, e me deparei com a resposta no site [DSD.](https://dsd.arcos.org.br/dmj02/)
+Uma das dificudades que tive, foi conseguir fazer a requisição com a página do STF, pois, sempre retornava o status code 403, onde em pesquisa feita, revelava que eu não tinha permissão para fazer a requisição. Logo, pedir para imprimir o response em formato de texto que me retornava a seguinte mensagem: "Seu acesso a este website foi bloqueado de forma preventiva. Por favor, tente novamente em alguns minutos. (FD)". Depois de esperar por minutos, horas e nada de conseguir fazer a requisição, foi então que procurei a mensagem no Google para verificar melhor qual seria a solução do problema, e me deparei com a resposta no site [DSD.](https://dsd.arcos.org.br/dmj02/)
 
 Para conseguir fazer a requisição, tive que alterar a estrutura padrão do cabeçalho, sendo a seguinte:
 ``` python
